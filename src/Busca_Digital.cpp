@@ -1,4 +1,4 @@
-#include "Busca_Digital.h";
+#include "Busca_Digital.h"
 
 Busca_Digital::Busca_Digital()
 {
