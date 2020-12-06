@@ -30,4 +30,14 @@ class GerenciadorDeArquivo{
 		fclose(fl);
 		return resultado;
 	}
+
+	static void convertStringtoArqFreq(string str){
+		ofstream fout("compactado.freq"); // Cria arquivo para gravação em modo texto
+		fout << str; 
+	}
+
+	static void convertStringtoArqDefreq(string str){
+		ofstream fout("descompactado.defreq"); // Cria arquivo para gravação em modo texto
+		 fout << str; 
+	}
 };
