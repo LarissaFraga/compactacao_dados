@@ -14,37 +14,38 @@ int main(int argc, char *argv[])
 {
 
     string documentoString = GerenciadorDeArquivo::convertTXTtoString(argv[1]);
-  
+
     // cout << documentoString << "\n";
 
     // cout << "Esse texto possui: "<< documentoString.size() <<" caracteres"<< "\n";
 
     string str = documentoString;
 
-    string encodedString, decodedString; 
-    
-    calcFreq(str, str.length()); 
-    
-    HuffmanCodes(str.length()); 
-    
-    cout << "Caracteres e suas frequencias:\n"; 
-    
-    for (auto v=codes.begin(); v!=codes.end(); v++) 
-        cout << v->first <<' ' << v->second << endl; 
-  
-    for (auto i: str) 
-        encodedString+=codes[i]; 
-  
-    cout << "\nDados codificados Huffman:\n" << encodedString << endl; 
+    string compactadaString, descompactadaString;
 
-    GerenciadorDeArquivo::convertStringtoArqFreq(encodedString);
-  
-    decodedString = decode_file(minHeap.top(), encodedString); 
-    
-    cout << "\nDados decodificados do Huffman:\n" << decodedString << endl; 
-    
-    GerenciadorDeArquivo::convertStringtoArqDefreq(decodedString);
+    calculaFreq(str, str.length());
 
-    return 0; 
+    codigoHuffman(str.length());
 
+    cout << "Caracteres e suas frequências:\n";
+
+    for (auto v = codes.begin(); v != codes.end(); v++)
+        cout << v->first << ' ' << v->second << endl;
+
+    for (auto i : str)
+        compactadaString += codes[i];
+
+    cout << "\nDados codificados Huffman:\n"
+         << encoded.String << endl;
+
+    GerenciadorDeArquivo::convertStringtoArqFreq(compactadaString);
+
+    descompactadaString = decodifica(minHeap.top(), compactadaString);
+
+    cout << "\nDados decodificados do Huffman:\n"
+         << descompactadaString << endl;
+
+    GerenciadorDeArquivo::convertStringtoArqDefreq(descompactadaString);
+
+    return 0;
 }
