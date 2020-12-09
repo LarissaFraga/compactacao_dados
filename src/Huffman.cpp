@@ -1,6 +1,8 @@
 #include <iostream>
 #include <map>
-#include <bits/stdc++.h>
+#include <queue>
+#include "MinNoHeap.cpp"
+
 #define MAX_TREE_HT 256
 using namespace std;
 
@@ -8,23 +10,9 @@ map<char, string> codes;
 
 map<char, int> freq;
 
-struct MinNoHeap
-{
-    char data;
-    int freq;
-    MinNoHeap *left, *right;
-
-    MinNoHeap(char data, int freq)
-    {
-        left = right = NULL;
-        this->data = data;
-        this->freq = freq;
-    }
-};
-
 struct compare
 {
-    bool operador()(MinNoHeap *l, MinNoHeap *r)
+    bool operator()(MinNoHeap *l, MinNoHeap *r)
     {
         return (l->freq > r->freq);
     }
@@ -87,7 +75,7 @@ string decodifica(struct MinNoHeap *pt, string s)
         else
             atual = atual->right;
 
-        if (atual->left == NULL and atual->right == NULL)
+        if (atual->left == NULL && atual->right == NULL)
         {
             ans += atual->data;
             atual = pt;

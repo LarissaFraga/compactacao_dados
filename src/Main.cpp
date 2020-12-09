@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
         compactadaString += codes[i];
 
     cout << "\nDados codificados Huffman:\n"
-         << encoded.String << endl;
+         << compactadaString << endl;
 
     GerenciadorDeArquivo::convertStringtoArqFreq(compactadaString);
 
